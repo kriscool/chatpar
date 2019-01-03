@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="578.0" minWidth="10.0" prefWidth="508.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="92.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendMessage" prefHeight="31.0" prefWidth="116.0" text="SEND" visible="false" GridPane.columnIndex="1" />
+            <TextField fx:id="textField" visible="false" />
+         </children>
+      </GridPane>
+   </bottom>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextArea fx:id="chatText" prefHeight="200.0" prefWidth="200.0" visible="false" />
+            <Button fx:id="logInButton" minWidth="200.0" mnemonicParsing="false" onAction="#logIn" text="Log in">
+               <GridPane.margin>
+                  <Insets left="200.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField fx:id="loginText" minWidth="200.0">
+               <GridPane.margin>
+                  <Insets bottom="150.0" left="100.0" right="100.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text fx:id="TypeLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Type login">
+               <GridPane.margin>
+                  <Insets bottom="230.0" left="250.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="513.0" minWidth="10.0" prefWidth="509.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="91.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <MenuButton fx:id="menuButtons" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" text="Menu" visible="false" GridPane.columnIndex="1">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#changeToXmlRpc" text="XmlRpc" fx:id="xmlRpcButton" />
+                <MenuItem fx:id="burlapButton" mnemonicParsing="false" onAction="#changeToBurlap" text="Burlap" />
+                  <MenuItem fx:id="hessianButton" mnemonicParsing="false" onAction="#changeToHessian" text="Hessian" />
+              </items>
+            </MenuButton>
+            <Text fx:id="loginShow" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
+         </children>
+      </GridPane>
+   </top>
+</BorderPane>
