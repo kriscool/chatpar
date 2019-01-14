@@ -1,4 +1,4 @@
-package com.example.klient;
+package com.kriscool.gui;
 
 import com.kriscool.api.MessageService;
 import javafx.scene.control.TextArea;
@@ -28,14 +28,14 @@ public class ReadMessage  extends Thread {
                 e.printStackTrace();
             }
 
-            if(MainController.chatTextDisplay.size()<_messege.getMesseges().size()){
-                int count=_messege.getMesseges().size()-MainController.chatTextDisplay.size();
+            if(Controller.chatTextDisplay.size()<_messege.getMesseges().size()){
+                int count=_messege.getMesseges().size()-Controller.chatTextDisplay.size();
                 String text = textOnChat.getText();
-                for(int i = _messege.getMesseges().size()-1;i>MainController.chatTextDisplay.size()-1;i--){
+                for(int i = _messege.getMesseges().size()-1;i>Controller.chatTextDisplay.size()-1;i--){
                     text+=_messege.getMesseges().get(i) + "\n";
                 }
                 textOnChat.setText(text);
-                MainController.chatTextDisplay=_messege.getMesseges();
+                Controller.chatTextDisplay=_messege.getMesseges();
             }
         }
     }

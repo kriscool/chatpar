@@ -1,4 +1,4 @@
-package com.example.klient;
+package com.kriscool.gui;
 
 import com.kriscool.api.MessageService;
 import org.apache.xmlrpc.client.XmlRpcClient;
@@ -16,8 +16,10 @@ import java.net.URL;
 @Component
 public class XmlRpc {
 
-
-    public XmlRpc() {}
+    private String url;
+    public XmlRpc(String url) {
+        this.url=url;
+    }
 
     public MessageService getXmlRpcApi() {
         XmlRpcClient client = xmlRpcClient(xmlRpcClientConfig());
@@ -34,7 +36,7 @@ public class XmlRpc {
     private XmlRpcClientConfigImpl xmlRpcClientConfig() {
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
         try {
-            config.setServerURL(new URL("http://localhost:8080/xmlrpc"));
+            config.setServerURL(new URL(url));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

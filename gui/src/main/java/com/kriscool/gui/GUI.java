@@ -1,4 +1,4 @@
-package com.example.klient;
+package com.kriscool.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,17 +10,17 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class KlientApplication extends Application {
+public class GUI extends Application {
 
     static ConfigurableApplicationContext context;
     private Parent rootNode;
 
     @Override
     public void init() throws Exception {
-        SpringApplicationBuilder builder = new SpringApplicationBuilder(KlientApplication.class);
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(GUI.class);
         context = builder.run(getParameters().getRaw().toArray(new String[0]));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Sample.fxml"));
         loader.setControllerFactory(context::getBean);
         rootNode = loader.load();
     }

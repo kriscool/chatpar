@@ -1,4 +1,4 @@
-package com.olczak.serwer;
+package com.kriscool.server;
 
 import com.kriscool.api.MessageService;
 import org.apache.xmlrpc.XmlRpcException;
@@ -18,25 +18,25 @@ public class SerwerApplication {
 
     private MessageServiceImpl messageServiceImpl = new MessageServiceImpl();
 
-    @Bean(name = "/hessian")
-    RemoteExporter hessianEndpoint() {
+    @Bean(name = "/xmlrpc-service")
+    public XmlServiceExporter xmlRpc() throws XmlRpcException {
+        return new XmlServiceExporter(messageServiceImpl);
+    }
+
+    @Bean(name = "/hessian-service")
+    RemoteExporter hessian() {
         HessianServiceExporter exporter = new HessianServiceExporter();
         exporter.setService(messageServiceImpl);
         exporter.setServiceInterface(MessageService.class);
         return exporter;
     }
 
-    @Bean(name = "/burlap")
-    RemoteExporter burlapEndpoint() {
+    @Bean(name = "/burlap-service")
+    RemoteExporter burlap() {
         BurlapServiceExporter exporter = new BurlapServiceExporter();
         exporter.setService(messageServiceImpl);
         exporter.setServiceInterface(MessageService.class);
         return exporter;
-    }
-
-    @Bean(name = "/xmlrpc")
-    public XmlServiceExporter xmlServiceExporter() throws XmlRpcException {
-        return new XmlServiceExporter(messageServiceImpl);
     }
 
     public MessageServiceImpl getChatImpl() {

@@ -1,4 +1,4 @@
-package com.olczak.serwer;
+package com.kriscool.server;
 
 import com.kriscool.api.MessageService;
 

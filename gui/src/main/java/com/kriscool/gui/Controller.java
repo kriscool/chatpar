@@ -1,19 +1,12 @@
-package com.example.klient;
+package com.kriscool.gui;
 
 import com.caucho.burlap.client.BurlapProxyFactory;
 import com.caucho.hessian.client.HessianProxyFactory;
 import com.kriscool.api.MessageService;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import javafx.util.Duration;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -22,14 +15,15 @@ import java.net.URL;
 import java.util.*;
 
 @Component
-public class MainController implements Initializable {
+public class Controller implements Initializable {
 
     private HessianProxyFactory factoryHessian = new HessianProxyFactory();
     private BurlapProxyFactory factoryBurlap = new BurlapProxyFactory();
     private ReadMessage readMessage;
-    private String _urlHessian = "http://localhost:8080/hessian";
-    private String _urlBurlap = "http://localhost:8080/burlap";
-    private XmlRpc xmlRpc = new XmlRpc();
+    private String _urlHessian = "http://localhost:8090/hessian-service";
+    private String _urlBurlap = "http://localhost:8090/burlap-service";
+    private String _urlXml="http://localhost:8090/xmlrpc-service";
+    private XmlRpc xmlRpc = new XmlRpc(_urlXml);
     private MessageService _messege;
     private String login;
     private MessageService getService()
