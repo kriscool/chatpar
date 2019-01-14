@@ -39,9 +39,6 @@ public class SerwerApplication {
         return exporter;
     }
 
-    public MessageServiceImpl getChatImpl() {
-        return messageServiceImpl;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(SerwerApplication.class, args);

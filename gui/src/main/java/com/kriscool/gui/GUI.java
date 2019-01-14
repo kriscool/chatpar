@@ -18,10 +18,8 @@ public class GUI extends Application {
     @Override
     public void init() throws Exception {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(GUI.class);
-        context = builder.run(getParameters().getRaw().toArray(new String[0]));
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Sample.fxml"));
-        loader.setControllerFactory(context::getBean);
         rootNode = loader.load();
     }
 

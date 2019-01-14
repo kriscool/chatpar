@@ -5,7 +5,10 @@ import com.caucho.hessian.client.HessianProxyFactory;
 import com.kriscool.api.MessageService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -26,7 +29,6 @@ public class Controller implements Initializable {
     private ReadMessage readMessage;
     private String _urlHessian = "http://localhost:8090/hessian-service";
     private String _urlBurlap = "http://localhost:8090/burlap-service";
-    //private XmlRpc xmlRpc = new XmlRpc();
     private MessageService _messege;
     private String login;
     private MessageService getService()
@@ -58,6 +60,8 @@ public class Controller implements Initializable {
     Text loginShow;
 
     public static HashMap<Integer,String> chatTextDisplay = new HashMap<>();
+
+
     @FXML
     private void changeToHessian(){
         try {
@@ -111,6 +115,7 @@ public class Controller implements Initializable {
         loginText.setVisible(false);
         TypeLogin.setVisible(false);
         login = loginText.getText();
+        chatText.setEditable(false);
         readMessage = new ReadMessage(chatText);
         readMessage.start();
         try {
@@ -130,7 +135,8 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    public MessageService getXmlRpcApi() {
+
+    private MessageService getXmlRpcApi() {
         XmlRpcClient xmlRpcClient = new XmlRpcClient();
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
         try {
