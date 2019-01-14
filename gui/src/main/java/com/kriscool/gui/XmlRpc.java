@@ -16,34 +16,23 @@ import java.net.URL;
 @Component
 public class XmlRpc {
 
-    private String url;
-    public XmlRpc(String url) {
-        this.url=url;
+    public XmlRpc() {
     }
 
     public MessageService getXmlRpcApi() {
-        XmlRpcClient client = xmlRpcClient(xmlRpcClientConfig());
-        return (MessageService) (new ClientFactory(client).newInstance(MessageService.class));
-    }
-
-    private XmlRpcClient xmlRpcClient(XmlRpcClientConfig config) {
         XmlRpcClient xmlRpcClient = new XmlRpcClient();
-        xmlRpcClient.setConfig(config);
-        xmlRpcClient.setTransportFactory(new XmlRpcCommonsTransportFactory(xmlRpcClient));
-        return xmlRpcClient;
-    }
-
-    private XmlRpcClientConfigImpl xmlRpcClientConfig() {
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
         try {
-            config.setServerURL(new URL(url));
+            config.setServerURL(new URL("http://localhost:8090/xmlrpc-service"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         config.setEnabledForExtensions(true);
         config.setEnabledForExceptions(true);
 
-        return config;
+        xmlRpcClient.setConfig(config);
+        xmlRpcClient.setTransportFactory(new XmlRpcCommonsTransportFactory(xmlRpcClient));
+        return (MessageService) (new ClientFactory(xmlRpcClient).newInstance(MessageService.class));
     }
 
 
